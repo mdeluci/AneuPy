@@ -14,13 +14,13 @@ export LD_LIBRARY_PATH=$SALOME_ROOT_DIR/BINARIES-CO7/KERNEL/lib:$LD_LIBRARY_PATH
 
 # Define and export directories
 export GEOMETRY_MODULE_DIR="../aneupy-master/aneupy"
-export GEOMETRY_DATA_DIR="/home/miguel/Desktop/aneupy-master/test/data"
-export GEOMETRY_OUTPUT_DIR="/home/miguel/Desktop/aneupy-master/test/Geometry_Output/Patient_Specific"
+export GEOMETRY_DATA_DIR="/home/Mario/Desktop/aneupy-master/test/data"
+export GEOMETRY_OUTPUT_DIR="/home/Mario/Desktop/aneupy-master/test/Geometry_Output/Patient_Specific"
 
 # Define file paths
-centerline_file="/home/miguel/Desktop/aneupy-master/test/data/centerline2.txt"
-wall_area_file="/home/miguel/Desktop/aneupy-master/test/data/Wall_Area2.txt"
-lumen_area_file="/home/miguel/Desktop/aneupy-master/test/data/Lumen_Area2.txt"
+centerline_file="/home/Mario/Desktop/aneupy-master/test/data/centerline2.txt"
+wall_area_file="/home/Mario/Desktop/aneupy-master/test/data/Wall_Area2.txt"
+lumen_area_file="/home/Mario/Desktop/aneupy-master/test/data/Lumen_Area2.txt"
 # Optionally set the use_tangent_normal flag
 # Set this to 1 for True or 0 for False
 USE_TANGENT_NORMAL=0
@@ -31,8 +31,6 @@ if [ "$USE_TANGENT_NORMAL" -eq 1 ]; then
 else
     use_tangent_normal=""
 fi
-
-
 
 # Run the Python script within the SALOME environment with specified arguments
 $SALOME_ROOT_DIR/salome shell -- python3 /home/miguel/Desktop/aneupy-master/test/Patient_specific.py \
