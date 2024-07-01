@@ -20,15 +20,15 @@ Aneupy offers three main functionalities:
 
 2. **Idealized Automatic Geometry Generation (`Idealized_automatic.py`)**:
    - Streamlines the geometry creation process using parameters defined in `Params_Idealized_Automatic.json`, including length, radii, and wall thicknesses. This method is ideal for simulations where standard geometrical parameters are needed. This script simplifies the creation of idealized geometries by utilizing predefined parameters:
-   - `length`: Total length of the aneurysm
-   - `radius_nondilated`: Non-dilated radius of the aneurysm
-   - `radius_dilated`: Radius of the aneurysm sac
-   - `wall_thickness_intima`: Wall thickness of the intima
-   - `wall_thickness_media`: Wall thickness of the media
-   - `wall_thickness_adventitia`: Wall thickness of the adventitia
-   - `wall_thickness_ILT`: Wall thickness of the intraluminal thrombus (ILT)
-   - `x_shift`: Assymetry of the AAA sac in the X-direction
-   - `y_shift`: Assymetry of the AAA sac in the Y-direction
+      - `length`: Total length of the aneurysm
+      - `radius_nondilated`: Non-dilated radius of the aneurysm
+      - `radius_dilated`: Radius of the aneurysm sac
+      - `wall_thickness_intima`: Wall thickness of the intima
+      - `wall_thickness_media`: Wall thickness of the media
+      - `wall_thickness_adventitia`: Wall thickness of the adventitia
+      - `wall_thickness_ILT`: Wall thickness of the intraluminal thrombus (ILT)
+      - `x_shift`: Assymetry of the AAA sac in the X-direction
+      - `y_shift`: Assymetry of the AAA sac in the Y-direction
 
 4. **Patient-Specific Geometry Generation (`Patient_specific.py`)**:
    - Generates geometries from patient-specific data derived from centerlines, wall area, and length measurements of the AAA, with the option to include thrombus area if available. This method allows for high fidelity modeling of individual anatomical features which can be critical in patient-specific simulation studies.
