@@ -14,7 +14,7 @@ Aneupy not only facilitates the generation of AAA geometries but also ensures th
 
 Click on the image below to watch Aneupy’s capabilities:
 
-[![Watch the video](https://img.youtube.com/vi/6yFBMedcIT8/maxresdefault.jpg)](https://www.youtube.com/watch?v=6yFBMedcIT8)
+[![Watch the video](https://img.youtube.com/vi/Q7G-yB3iWwQ/maxresdefault.jpg)](https://www.youtube.com/embed/Q7G-yB3iWwQ)
 
 
 
