@@ -10,11 +10,12 @@ Aneupy not only facilitates the generation of AAA geometries but also ensures th
 - **Fluid and Solid Domain Preparation**: Generates distinct geometries suitable for fluid dynamics analyses, structural mechanics, or fluid-structure interaction (FSI) simulations.
 - **Multiple Export Formats**: Supports exporting geometries in .IGES, .STEP, and .STL formats, providing compatibility with a wide range of FEA (Finite Element Analysis), CFD (Computational Fluid Dynamics), and FSI simulation software.
 - **Optimized for Analysis**: Geometries are prepared with considerations for computational efficiency and accuracy, ensuring that they are ready to be integrated into simulation workflows without additional preprocessing.
-
-<div class="video-container">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/6yFBMedcIT8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-</div>
-<br/><br/>
+- 
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=6yFBMedcIT8">
+    <img src="https://img.youtube.com/vi/6yFBMedcIT8/maxresdefault.jpg" alt="Watch the video">
+  </a>
+</p>
 
 
 ### Advanced Modeling Capabilities
