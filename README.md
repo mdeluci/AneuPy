@@ -53,6 +53,39 @@ git clone https://github.com/mdeluci/aneupy.git
 cd aneupy
 ```
 
+## Setting Up the Environment
+
+Before running the Aneupy scripts, make sure that the paths to Python and SALOME are correctly exported in each of the shell script files you will use. Each shell script is configured to run a specific Python script within the SALOME environment:
+
+- `Run_Idealized_Manual.sh`
+- `Run_Idealized_Automatic.sh`
+- `Run_Patient_Specific.sh`
+
+Edit these files to ensure that they correctly point to the locations where Python and SALOME are installed on your system. This typically involves setting or modifying the `PATH`, `PYTHONPATH`, and `LD_LIBRARY_PATH` environment variables within these scripts.
+
+## Execution
+
+To run the Aneupy scripts, navigate to the directory containing your cloned repository and execute the appropriate shell script for the task you want to perform. You can run the scripts directly from the command line.
+
+### Running the Idealized Manual Geometry Script
+
+```bash
+./Run_Idealized_Manual.sh
+```
+this script does not require any additional parameters and will execute with predefined settings.
+
+### Notes and Troubleshooting
+
+It might be helpful to include additional notes or a troubleshooting section to assist users in resolving common issues they might encounter.
+
+```markdown
+## Notes and Troubleshooting
+
+- Ensure that all paths set in the shell scripts accurately reflect your system's configuration.
+- If you encounter permission errors, you may need to make the shell scripts executable. You can do this with the command `chmod +x Run_*.sh`.
+- For any errors related to Python dependencies or SALOME functionalities, ensure that all required libraries are installed and accessible.
+```
+
 [![DOI](https://zenodo.org/badge/22895/jacobo-diaz/aneupy.svg)](https://zenodo.org/badge/latestdoi/22895/jacobo-diaz/aneupy)
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License</a>.
