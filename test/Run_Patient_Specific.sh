@@ -18,10 +18,20 @@ export GEOMETRY_DATA_DIR="/home/miguel/Desktop/aneupy-master/test/data"
 export GEOMETRY_OUTPUT_DIR="/home/miguel/Desktop/aneupy-master/test/Geometry_Output/Patient_Specific"
 
 # Define file paths
-centerline_file="/home/miguel/Desktop/aneupy-master/test/data/centerline1.txt"
-wall_area_file="/home/miguel/Desktop/aneupy-master/test/data/Wall_Area.txt"
-lumen_area_file="/home/miguel/Desktop/aneupy-master/test/data/Lumen_Area.txt"
-use_tangent_normal=false
+centerline_file="/home/miguel/Desktop/aneupy-master/test/data/centerline2.txt"
+wall_area_file="/home/miguel/Desktop/aneupy-master/test/data/Wall_Area2.txt"
+lumen_area_file="/home/miguel/Desktop/aneupy-master/test/data/Lumen_Area2.txt"
+# Optionally set the use_tangent_normal flag
+# Set this to 1 for True or 0 for False
+USE_TANGENT_NORMAL=0
+
+# Conditional use of the tangent normal flag
+if [ "$USE_TANGENT_NORMAL" -eq 1 ]; then
+    use_tangent_normal="--use_tangent_normal"
+else
+    use_tangent_normal=""
+fi
+
 
 
 # Run the Python script within the SALOME environment with specified arguments
@@ -29,7 +39,7 @@ $SALOME_ROOT_DIR/salome shell -- python3 /home/miguel/Desktop/aneupy-master/test
 --centerline_file "$centerline_file" \
 --wall_area_file "$wall_area_file" \
 --lumen_area_file "$lumen_area_file" \
---use_tangent_normal "$use_tangent_normal"
+$use_tangent_normal
 
 # To run this script: 
 # ./Run_Patient_Specific.sh
