@@ -24,7 +24,7 @@ parser = argparse.ArgumentParser(description="Process geometry data and configur
 parser.add_argument('--centerline_file', type=str, help='Path to the centerline file')
 parser.add_argument('--wall_area_file', type=str, help='Path to the wall area file')
 parser.add_argument('--lumen_area_file', type=str, help='Path to the lumen area file')
-parser.add_argument('--use_tangent_normal', type=bool, default=False, help='Whether to use tangent normal (True) or upward normal in Z-direction (False)')
+parser.add_argument('--use_tangent_normal', action='store_true', help='Use tangent normal (specify this flag to use tangent normal, otherwise upward normal in Z-direction is used)')
 
 # Parse the arguments
 args = parser.parse_args()
