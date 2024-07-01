@@ -3,14 +3,14 @@ def readme():
     with open('README.md') as f:
         return f.read()
 setup(
-    name='aneupy',
+    name='Aneupy',
     version='0.1.0',
     author='Mario de Lucio',
     author_email='mdeluci@purdue.edu',
     description='A Python library for simulating Abdominal Aortic Aneurysms',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
-    url='https://github.com/yourusername/aneupy',
+    url='https://github.com/mdeluci/Aneupy',
     packages=find_packages(),
     classifiers=[
         'Development Status :: 3 - Alpha',
