@@ -1,3 +1,15 @@
+# =============================================================================
+#
+# Idealized_automatic.py
+#
+# Python module to generate idealized AAA geometries automatically
+#
+# Jacobo Diaz - jdiaz@udc.es
+# Mario de Lucio - mdeluci@purdue.edu
+# 2024
+#
+# =============================================================================
+
 #!/usr/bin/env python3
 
 import os
