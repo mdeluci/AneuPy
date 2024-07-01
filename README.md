@@ -11,7 +11,7 @@ Aneupy not only facilitates the generation of AAA geometries but also ensures th
 - **Multiple Export Formats**: Supports exporting geometries in .IGES, .STEP, and .STL formats, providing compatibility with a wide range of FEA (Finite Element Analysis), CFD (Computational Fluid Dynamics), and FSI simulation software.
 - **Optimized for Analysis**: Geometries are prepared with considerations for computational efficiency and accuracy, ensuring that they are ready to be integrated into simulation workflows without additional preprocessing.
 
-- ### Advanced Modeling Capabilities
+### Advanced Modeling Capabilities
 
 - **Multi-Layered Domain Generation**: Aneupy is capable of generating detailed multi-layered domains that mimic the main layers of an artery. This includes:
   - **Intima**: The innermost layer, often affected in vascular diseases.
