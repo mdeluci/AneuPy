@@ -1,3 +1,15 @@
+# =============================================================================
+#
+# Idealized_manual.py
+#
+# Python module to generate idealized AAA geometries manually
+#
+# Jacobo Diaz - jdiaz@udc.es
+# Mario de Lucio - mdeluci@purdue.edu
+# 2024
+#
+# =============================================================================
+
 #!/usr/bin/env python3
 
 import os
