@@ -1,7 +1,15 @@
 # Aneupy
 
-Aneupy is an open-source software tool designed to generate both idealized and patient-specific geometries of abdominal aortic aneurysms (AAA). It utilizes the Python interface of the [SALOME platform](https://www.salome-platform.org/) to provide versatile geometry creation options suitable for research and educational purposes.
+Aneupy is an open-source software tool designed to generate both idealized and patient-specific geometries of abdominal aortic aneurysms (AAA). It utilizes the Python interface of the [SALOME platform](https://www.salome-platform.org/) to provide versatile geometry creation options suitable for research and educational purposes. Aneupy provides versatile options for creating detailed geometrical models suitable for a variety of computational analyses.
 ![Example Image](./Examples.png)
+
+### Simulation-Ready Geometries
+
+Aneupy not only facilitates the generation of AAA geometries but also ensures that the output is ready for various simulation types:
+
+- **Fluid and Solid Domain Preparation**: Generates distinct geometries suitable for fluid dynamics analyses, structural mechanics, or fluid-structure interaction (FSI) simulations.
+- **Multiple Export Formats**: Supports exporting geometries in .IGES, .STEP, and .STL formats, providing compatibility with a wide range of FEA (Finite Element Analysis), CFD (Computational Fluid Dynamics), and FSI simulation software.
+- **Optimized for Analysis**: Geometries are prepared with considerations for computational efficiency and accuracy, ensuring that they are ready to be integrated into simulation workflows without additional preprocessing.
 
 ## Features
 
@@ -11,7 +19,7 @@ Aneupy offers three main functionalities:
    - Allows users to manually input the cross sections (XYZ locations) and radii to generate idealized AAA geometries.
 
 2. **Idealized Automatic Geometry Generation (`Idealized_automatic.py`)**:
-   - Automates the generation process using parameters specified in `Params_Idealized_Automatic.json`. This script simplifies the creation of idealized geometries by utilizing predefined parameters:
+   - Streamlines the geometry creation process using parameters defined in `Params_Idealized_Automatic.json`, including length, radii, and wall thicknesses. This method is ideal for simulations where standard geometrical parameters are needed. This script simplifies the creation of idealized geometries by utilizing predefined parameters:
    - `length`: Total length of the aneurysm
    - `radius_nondilated`: Non-dilated radius of the aneurysm
    - `radius_dilated`: Radius of the aneurysm sac
@@ -22,8 +30,8 @@ Aneupy offers three main functionalities:
    - `x_shift`: Assymetry of the AAA sac in the X-direction
    - `y_shift`: Assymetry of the AAA sac in the Y-direction
 
-3. **Patient-Specific Geometry Generation (`Patient_specific.py`)**:
-   - Generates geometries from patient-specific data derived from centerlines, wall area, and length measurements of the AAA, with the option to include thrombus area if available.
+4. **Patient-Specific Geometry Generation (`Patient_specific.py`)**:
+   - Generates geometries from patient-specific data derived from centerlines, wall area, and length measurements of the AAA, with the option to include thrombus area if available. This method allows for high fidelity modeling of individual anatomical features which can be critical in patient-specific simulation studies.
 
 ## Installation
 
