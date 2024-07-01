@@ -1,0 +1,11 @@
+{
+    "length": 100.0,
+    "radius_nondilated": 5.0,
+    "radius_dilated": 12.0,
+    "wall_thickness_intima": 0.5,
+    "wall_thickness_media": 0.3,
+    "wall_thickness_adventitia": 0.7,
+    "wall_thickness_ILT": 0.0,
+    "x_shift": 5.0,
+    "y_shift": 0.0
+}

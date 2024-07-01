@@ -1,0 +1,305 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+#import argparse
+
+# Manually specify the directory containing the Geometry module
+geometry_module_dir = '/home/miguel/Desktop/aneupy-master/aneupy'  # Adjust this path as needed
+
+# Add the directory to the Python path
+sys.path.append(geometry_module_dir)
+# Now you can import the Geometry module
+import Geometry
+aneupy = Geometry
+
+import salome
+salome.salome_init()
+
+# Create an ArgumentParser object
+#parser = argparse.ArgumentParser(description="Create an aneurysm model")
+
+# Define command-line arguments
+#parser.add_argument('--length', type=float, required=True, help='Total length of the aneurysm')
+#parser.add_argument('--radius_nondilated', type=float, required=True, help='Non-dilated radius of the aneurysm')
+#parser.add_argument('--beta', type=float, required=True, help='Beta parameter for radius ratio')
+#parser.add_argument('--wall_thickness', type=float, required=True, help='Wall thickness of the aneurysm')
+
+# Parse the arguments
+#args = parser.parse_args()
+
+Length = 100.0 #args.length #total lenght of aneurysm
+R0 = 5.0 #args.radius_nondilated #non-dilated radius
+beta = 0.4 #args.beta #assimetry parameter
+wall_thickness_intima = 1.0 #args.wall_thickness
+wall_thickness_media = 1.0 #args.wall_thickness
+wall_thickness_media = wall_thickness_media + wall_thickness_intima #args.wall_thickness
+wall_thickness_adventitia = 1.0 #args.wall_thickness
+wall_thickness_adventitia = wall_thickness_adventitia + wall_thickness_media #args.wall_thickness
+ILT_thickness = 1.0
+R_sac = 15.5
+x_shift = 5.0
+y_shift = 15.0
+n_sections = 11
+
+def interpolate_radius(R_nondilated, R_dilated):
+    """
+    Interpolates the radius between the non-dilated section (R0) and the dilated section (R_dilated).
+
+    Parameters:
+    R0 (float): Radius of the non-dilated section.
+    R_dilated (float): Radius of the dilated section.
+
+    Returns:
+    float: Interpolated midpoint radius.
+    """
+    R_mid = (R_nondilated + R_dilated) / 2
+    return R_mid
+
+
+R_mid= interpolate_radius(R0,R_sac)
+
+def add_sections(d, total_length, num_sections, prefix='a'):
+    step = total_length / (num_sections - 1)
+    for i in range(num_sections):
+        length = total_length * (i / (num_sections - 1))
+        name = f'{prefix}{i}'
+        print(f"Adding section: {name}, origin: [0., 0., {length}]")  # Debug print
+        d.add_section(name=name, origin=[0., 0., length])
+
+	# Adding an extra control point at the beginning for a smooth transition
+        if i == 0:
+	    # First extra section at one-third
+            extra_length1 = length + step / 3
+            extra_name1 = f'{prefix}{i}a'
+            print(f"Adding first extra section: {extra_name1}, origin: [0., 0., {extra_length1}]")  # Debug print
+            d.add_section(name=extra_name1, origin=[0., 0., extra_length1])
+
+	    # Second extra section at one-third
+            extra_length2 = length + 2 * step / 3
+            extra_name2 = f'{prefix}{i}b'
+            print(f"Adding second extra section: {extra_name2}, origin: [0., 0., {extra_length2}]")  # Debug print
+            d.add_section(name=extra_name2, origin=[0., 0., extra_length2])
+
+        mid_section = num_sections // 2  # The middle section
+        if i == mid_section-1:
+            print(f"Adding shifted mid-section-1 -> origin: [x_shift/2,y_shift/2, length]")  # Debug print
+            d.add_section(name=name, origin=[x_shift/2, y_shift/2, length])
+
+        if i == mid_section:
+            print(f"Adding shifted mid-section -> origin: [x_shift, y_shift, length]")  # Debug print
+            d.add_section(name=name, origin=[x_shift, y_shift, length])
+
+        if i == mid_section+1:
+            print(f"Adding shifted mid-section+1 -> origin: [x_shift/2, y_shift/2, length]")  # Debug print
+            d.add_section(name=name, origin=[x_shift/2, y_shift/2, length])
+
+	# Adding an extra control point at the beginning for a smooth transition
+        if i == num_sections - 2:
+            extra_index3 = i + 1  # This is the original index of the last section
+            extra_index4 = i + 1  # This will be the new index for an additional extra section
+
+            # First extra section, halfway between the second-to-last and last original section
+            extra_name3 = f'{prefix}{extra_index3}a'
+            extra_length3 = length + step / 2
+            print(f"Adding first extra section just before the last: {extra_name3}, origin: [0., 0., {extra_length3}]")
+            d.add_section(name=extra_name3, origin=[0., 0., extra_length3])
+
+            # Second extra section, halfway between the second-to-last and last original section
+            extra_name4 = f'{prefix}{extra_index4}b'
+            extra_length4 = length + 3 * step / 4
+            print(f"Adding first extra section just before the last: {extra_name4}, origin: [0., 0., {extra_length4}]")
+            d.add_section(name=extra_name4, origin=[0., 0., extra_length4])
+
+           
+
+def add_circles(d, num_sections, R0, R_sac, wall_thickness, prefix='a'):
+    mid_section = num_sections // 2  # The middle section
+    transition_range = 2  # Number of sections to transition on either side of the middle
+    radii_map = {}
+    
+    for i in range(num_sections):
+        if i == mid_section:
+            radii_map[i] = R_sac
+        elif i in range(mid_section - transition_range, mid_section) or i in range(mid_section + 1, mid_section + transition_range + 1):
+            if i < mid_section:
+                radius = R_sac + (R0 - R_sac) * (mid_section - i) / transition_range
+            else:
+                radius = R_sac + (R0 - R_sac) * (i - mid_section) / transition_range
+            radii_map[i] = radius
+        else:
+            radii_map[i] = R0
+
+    for i in range(num_sections):
+        name = f'{prefix}{i}'
+        radius = radii_map[i]
+        # Adjust wall thickness based on the section
+        if prefix == 'b':
+            if i == mid_section-1:
+                # Apply special thickness only at the mid_section
+                radius -= ILT_thickness/2
+            elif i == mid_section:
+                # Apply special thickness only at the mid_section
+                radius -= ILT_thickness
+            elif i == mid_section+1:
+                # Apply special thickness only at the mid_section
+                radius -= ILT_thickness/2
+            else:
+                # Apply normal thickness elsewhere
+                radius -= wall_thickness if radius != R_sac else (wall_thickness + 0.2)
+
+        if name in d.sections:
+            print(f"Adding circle to section {name}: radius = {radius}")  # Debug print
+            d.sections[name].add_circle(radius=radius)
+
+        # Adding circle to the extra control point at the beginning
+        if i == 0:
+            # First extra section
+            extra_name1 = f'{prefix}{i}a'
+            if extra_name1 in d.sections:
+                print(f"Adding circle to first extra section at the beginning {extra_name1}: radius = {radius}")  # Debug print
+                d.sections[extra_name1].add_circle(radius=radius)
+            # Second extra section
+            extra_name2 = f'{prefix}{i}b'
+            if extra_name2 in d.sections:
+                print(f"Adding circle to first extra section at the beginning {extra_name2}: radius = {radius}")  # Debug print
+                d.sections[extra_name2].add_circle(radius=radius)
+
+        # Adding circle to the extra control point at the beginning
+ 	# Adding circles to the extra sections just before the last original section
+        if i == num_sections - 2:
+            extra_index3 = i + 1  # Corrected to define extra_index1 before using it
+            extra_name3 = f'{prefix}{extra_index3}a'
+            if extra_name3 in d.sections:
+                print(f"Adding circle to extra section just before the last {extra_name3}: radius = {radius}")
+                d.sections[extra_name3].add_circle(radius=radius)
+
+            extra_index4 = i + 1  # Corrected to define extra_index2 before using it
+            extra_name4 = f'{prefix}{extra_index4}b'
+            if extra_name4 in d.sections:
+                print(f"Adding circle to extra section just before the last {extra_name4}: radius = {radius}")
+                d.sections[extra_name4].add_circle(radius=radius)
+
+
+def add_shell(d, num_sections, prefix='a'):
+    section_names = [f'{prefix}{i}' for i in range(num_sections)]
+    # Insert the first extra section after the first section
+    section_names.insert(1, f'{prefix}0a')
+    # Insert the second extra section after the first extra section
+    section_names.insert(2, f'{prefix}0b')
+    # Correctly place the extra section before the last section
+    # Since 'a10' will be the last section, we insert 'a10a' just before it
+    extra_section_index1 = num_sections - 1 + 2  # account for two extra sections added after 'a0'
+    extra_section_index2 = extra_section_index1 + 1
+
+    # Insert the first extra section ('a10a') before 'a10'
+    section_names.insert(extra_section_index1, f'{prefix}{num_sections-1}a')
+    # Insert the second extra section ('a10b') right after 'a10a'
+    section_names.insert(extra_section_index2, f'{prefix}{num_sections-1}b')
+
+    # Expanded inline conditional logic for determining shell name
+    shell_name = ('aneurysm_outer' if prefix == 'a' else
+                 ('aneurysm_inner' if prefix == 'b' else
+                 ('media_outer' if prefix == 'media' else
+                 ('adventitia_outer' if prefix == 'adventitia' else
+                 'default_shell_name'))))
+
+    print(f"Adding shell: {shell_name}, sections: {section_names}")  # Debug print
+    d.add_shell(name=shell_name, sections=section_names, minBSplineDegree=10, maxBSplineDegree=20, approximation=True)
+
+def add_solids(d):
+    print("Adding solids from shells")  # Debug print
+    d.add_solid_from_shell(name='aneurysm_outer', shell='aneurysm_outer')
+    d.add_solid_from_shell(name='aneurysm_fluid', shell='aneurysm_inner')
+    d.add_solid_from_cut(name='aneurysm_solid', solids=['aneurysm_outer', 'aneurysm_fluid'])
+    d.add_solid_from_shell(name='media_outer', shell='media_outer')
+    d.add_solid_from_cut(name='media_solid', solids=['media_outer', 'aneurysm_outer'])
+    d.add_solid_from_shell(name='adventitia_outer', shell='adventitia_outer')
+    d.add_solid_from_cut(name='adventitia_solid', solids=['adventitia_outer', 'media_outer'])
+
+def export_files(d):
+    d.export_iges(solid='aneurysm_solid', file='aneurysm_solid.iges')
+    d.export_iges(solid='aneurysm_fluid', file='aneurysm_fluid.iges')
+    d.export_iges(solid='media_solid', file='media_solid.iges')
+    d.export_iges(solid='adventitia_solid', file='adventitia_solid.iges')
+    d.export_stl(solid='aneurysm_fluid', file='aneurysm_fluid.stl')
+    d.export_stl(solid='aneurysm_solid', file='aneurysm_solid.stl')
+    d.export_stl(solid='media_solid', file='media_solid.stl')
+    d.export_stl(solid='adventitia_solid', file='adventitia_solid.stl')
+
+def save_files(d):
+    d.save('/home/miguel/Desktop/aneupy-master/aneupy/aneurysm_study.hdf')
+
+d = aneupy.Domain()
+
+# Example class definitions and usage:
+class Section:
+    def __init__(self, name):
+        self.name = name
+
+    def add_circle(self, radius):
+        print(f"Adding circle to section {self.name}: radius = {radius}")
+
+class D:
+    def __init__(self):
+        self.sections = {}
+
+    def add_section(self, name, origin):
+        self.sections[name] = Section(name)
+        print(f"Adding section: {name}, origin: {origin}")
+
+    def add_shell(self, name, sections, minBSplineDegree, maxBSplineDegree, approximation):
+        print(f"Adding shell: {name}, sections: {sections}, "
+              f"minBSplineDegree: {minBSplineDegree}, maxBSplineDegree: {maxBSplineDegree}, approximation: {approximation}")
+
+    def add_solid_from_shell(self, name, shell):
+        print(f"Adding solid from shell: {name}, shell: {shell}")
+
+    def add_solid_from_cut(self, name, solids):
+        print(f"Adding solid from cut: {name}, solids: {solids}")
+
+    def export_iges(self, solid, file):
+        print(f"Exporting IGES: solid = {solid}, file = {file}")
+
+    def export_stl(self, solid, file):
+        print(f"Exporting STL: solid = {solid}, file = {file}")
+
+# Adding 'a' sections
+printing = D()
+add_sections(d, total_length=Length, num_sections=n_sections, prefix='a')
+add_sections(printing, total_length=Length, num_sections=n_sections, prefix='a')
+add_circles(d, num_sections=n_sections, R0=R0, R_sac=R_sac, wall_thickness=wall_thickness_intima, prefix='a')
+add_circles(printing, num_sections=n_sections, R0=R0, R_sac=R_sac, wall_thickness=wall_thickness_intima, prefix='a')
+add_shell(d, num_sections=n_sections, prefix='a')
+add_circles(printing, num_sections=n_sections, R0=R0, R_sac=R_sac, wall_thickness=wall_thickness_intima, prefix='a')
+
+# Adding 'b' sections
+add_sections(d, total_length=Length, num_sections=n_sections, prefix='b')
+add_sections(printing, total_length=Length, num_sections=n_sections, prefix='b')
+add_circles(d, num_sections=n_sections, R0=R0, R_sac=R_sac, wall_thickness=wall_thickness, prefix='b')
+add_circles(printing, num_sections=n_sections, R0=R0, R_sac=R_sac, wall_thickness=wall_thickness, prefix='b')
+add_shell(d, num_sections=n_sections, prefix='b')
+add_shell(printing, num_sections=n_sections, prefix='b')
+
+# Adding 'media' sections
+printing = D()
+add_sections(d, total_length=Length, num_sections=n_sections, prefix='media')
+add_sections(printing, total_length=Length, num_sections=n_sections, prefix='media')
+add_circles(d, num_sections=n_sections, R0=R0+wall_thickness_media, R_sac=R_sac+wall_thickness_media, wall_thickness=wall_thickness_media, prefix='media')
+add_circles(printing, num_sections=n_sections, R0=R0+wall_thickness_media, R_sac=R_sac+wall_thickness_media, wall_thickness=wall_thickness_media, prefix='media')
+add_shell(d, num_sections=n_sections, prefix='media')
+add_circles(printing, num_sections=n_sections, R0=R0+wall_thickness_media, R_sac=R_sac+wall_thickness_media, wall_thickness=wall_thickness+wall_thickness_media, prefix='media')
+
+# Adding 'adventitia' sections
+printing = D()
+add_sections(d, total_length=Length, num_sections=n_sections, prefix='adventitia')
+add_sections(printing, total_length=Length, num_sections=n_sections, prefix='adventitia')
+add_circles(d, num_sections=n_sections, R0=R0+wall_thickness_adventitia, R_sac=R_sac+wall_thickness_adventitia, wall_thickness=wall_thickness_adventitia, prefix='adventitia')
+add_circles(printing, num_sections=n_sections, R0=R0+wall_thickness_adventitia, R_sac=R_sac+wall_thickness_adventitia, wall_thickness=wall_thickness_adventitia, prefix='adventitia')
+add_shell(d, num_sections=n_sections, prefix='adventitia')
+add_circles(printing, num_sections=n_sections, R0=R0+wall_thickness_adventitia, R_sac=R_sac+wall_thickness_adventitia, wall_thickness=wall_thickness+wall_thickness_media, prefix='adventitia')
+
+add_solids(d)
+add_solids(printing)
+export_files(d)
+export_files(printing)
