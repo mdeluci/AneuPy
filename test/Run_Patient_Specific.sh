@@ -14,7 +14,7 @@ export LD_LIBRARY_PATH=$SALOME_ROOT_DIR/BINARIES-CO7/KERNEL/lib:$LD_LIBRARY_PATH
 
 export GEOMETRY_MODULE_DIR="/home/miguel/Desktop/aneupy-master/aneupy"
 export GEOMETRY_DATA_DIR="/home/miguel/Desktop/aneupy-master/test/data"
-export GEOMETRY_OUTPUT_DIR="/home/miguel/Desktop/aneupy-master/test/Geometry_Output/Idealized_Manual"
+export GEOMETRY_OUTPUT_DIR="/home/miguel/Desktop/aneupy-master/test/Geometry_Output/Patient_Specific"
 
 # Set this to 1 for True or 0 for False
 USE_TANGENT_NORMAL=0
