@@ -22,10 +22,6 @@ Aneupy offers three main functionalities:
 
 To use Aneupy, ensure that you have the SALOME platform installed with its Python interface enabled. Clone this repository to your local machine:
 
-```bash
-git clone https://github.com/yourgithubusername/aneupy.git
-cd aneupy
-
 
 [![DOI](https://zenodo.org/badge/22895/jacobo-diaz/aneupy.svg)](https://zenodo.org/badge/latestdoi/22895/jacobo-diaz/aneupy)
 
