@@ -65,7 +65,7 @@ Edit these files to ensure that they correctly point to the locations where Pyth
 
 ## Execution
 
-To run the Aneupy scripts, navigate to the directory containing your cloned repository and execute the appropriate shell script for the task you want to perform. You can run the scripts directly from the command line.
+To run the Aneupy scripts, navigate to the test directory containing your cloned repository and execute the appropriate shell script for the task you want to perform. You can run the scripts directly from the command line.
 
 ### Running the Idealized Manual Geometry Script
 
@@ -74,9 +74,22 @@ To run the Aneupy scripts, navigate to the directory containing your cloned repo
 ```
 this script does not require any additional parameters and will execute with predefined settings.
 
+### Running the Idealized Automatic Geometry Script
+
+You have two options for running the Idealized Automatic script:
+
+ - Manually inputting the parameters: `./Run_Idealized_Automatic.sh --length 120 --radius_nondilated 3 --radius_dilated 8 --wall_thickness_intima 0.5 --wall_thickness_media 0.3 --wall_thickness_adventitia 0.7 --wall_thickness_ILT 2 --x_shift 1.5 --y_shift 2.0`
+ - Using a configuration file: `./Run_Idealized_Automatic.sh --config_file ./Params_Idealized_Automatic.json`
+
+### Running the Patient-Specific Geometry Script
+This script will use patient-specific data that you have placed in the data directory as per the script settings.
+
 ### Notes and Troubleshooting
 
-It might be helpful to include additional notes or a troubleshooting section to assist users in resolving common issues they might encounter.
+It might be helpful to include additional notes or a troubleshooting section to assist users in resolving common issues they might encounter. To run this script just execute:
+```bash
+./Run_Patient_Specific.sh
+```
 
 ```markdown
 ## Notes and Troubleshooting
