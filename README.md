@@ -51,7 +51,7 @@ Once you have the prerequisites installed, you can install Aneupy by cloning its
 ```bash
 git clone https://github.com/yourgithubusername/aneupy.git
 cd aneupy
-
+```
 
 [![DOI](https://zenodo.org/badge/22895/jacobo-diaz/aneupy.svg)](https://zenodo.org/badge/latestdoi/22895/jacobo-diaz/aneupy)
 
