@@ -49,7 +49,7 @@ Before you can use Aneupy, ensure that your system meets the following prerequis
 Once you have the prerequisites installed, you can install Aneupy by cloning its repository:
 
 ```bash
-git clone https://github.com/yourgithubusername/aneupy.git
+git clone https://github.com/mdeluci/aneupy.git
 cd aneupy
 ```
 
