@@ -5,7 +5,8 @@
 # Python module to generate solid models in SALOME
 #
 # Jacobo Diaz - jdiaz@udc.es
-# 2015
+# Mario de Lucio - mdeluci@purdue.edu
+# 2024
 #
 # =============================================================================
 #!/usr/bin/env python3
