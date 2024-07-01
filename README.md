@@ -26,7 +26,31 @@ Aneupy offers three main functionalities:
 
 ## Installation
 
-To use Aneupy, ensure that you have the SALOME platform installed with its Python interface enabled. Clone this repository to your local machine:
+Before you can use Aneupy, ensure that your system meets the following prerequisites:
+
+### Prerequisites
+
+1. **Python 3**:
+   - Aneupy requires Python 3. Ensure you have Python 3 installed on your system. You can download Python 3 from the [official Python website](https://www.python.org/downloads/).
+   - To verify Python is installed, run the following command in your terminal or command prompt:
+     ```bash
+     python --version
+     # or
+     python3 --version
+     ```
+     Ensure that the output indicates a Python 3 version.
+
+2. **SALOME**:
+   - Aneupy utilizes the SALOME platform for geometric modeling. Install SALOME version 9.11.0 or newer. You can download it from the [SALOME website](https://www.salome-platform.org/?page_id=2430).
+   - Follow the installation instructions provided on the SALOME website to ensure it is correctly installed on your system.
+
+### Installing Aneupy
+
+Once you have the prerequisites installed, you can install Aneupy by cloning its repository:
+
+```bash
+git clone https://github.com/yourgithubusername/aneupy.git
+cd aneupy
 
 
 [![DOI](https://zenodo.org/badge/22895/jacobo-diaz/aneupy.svg)](https://zenodo.org/badge/latestdoi/22895/jacobo-diaz/aneupy)
