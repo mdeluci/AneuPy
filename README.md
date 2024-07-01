@@ -1,7 +1,31 @@
 aneupy
 =======
 
-Python code for simulating Abdominal Aorta Aneurysms in Abaqus/CAE
+# Aneupy
+
+Aneupy is an open-source software tool designed to generate both idealized and patient-specific geometries of abdominal aortic aneurysms (AAA). It utilizes the Python interface of the SALOME platform to provide versatile geometry creation options suitable for research and educational purposes.
+
+## Features
+
+Aneupy offers three main functionalities:
+
+1. **Idealized Manual Geometry Generation (`Idealized_manual.py`)**:
+   - Allows users to manually input the sections (XYZ locations) and radii to generate idealized AAA geometries.
+
+2. **Idealized Automatic Geometry Generation (`Idealized_automatic.py`)**:
+   - Automates the generation process using parameters specified in `Params_Idealized_Automatic.json`.
+
+3. **Patient-Specific Geometry Generation (`Patient_specific.py`)**:
+   - Generates geometries based on patient-specific data, including centerline details of the AAA, wall area, and optionally, the thrombus area.
+
+## Installation
+
+To use Aneupy, ensure that you have the SALOME platform installed with its Python interface enabled. Clone this repository to your local machine:
+
+```bash
+git clone https://github.com/yourgithubusername/aneupy.git
+cd aneupy
+
 
 [![DOI](https://zenodo.org/badge/22895/jacobo-diaz/aneupy.svg)](https://zenodo.org/badge/latestdoi/22895/jacobo-diaz/aneupy)
 
