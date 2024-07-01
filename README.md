@@ -73,7 +73,7 @@ To run the Aneupy scripts, navigate to the test directory containing your cloned
 ```bash
 ./Run_Idealized_Manual.sh
 ```
-this script does not require any additional parameters and will execute with predefined settings.
+this script does not require any additional parameters and will execute with predefined settings. It will produce .IGES, .STL and .STEP files for the solid and fluid domain of the aneurysm.
 
 ### Running the Idealized Automatic Geometry Script
 
