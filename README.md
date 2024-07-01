@@ -82,7 +82,18 @@ You have two options for running the Idealized Automatic script:
  - Using a configuration file: `./Run_Idealized_Automatic.sh --config_file ./Params_Idealized_Automatic.json`
 
 ### Running the Patient-Specific Geometry Script
-This script will use patient-specific data that you have placed in the data directory as per the script settings. To run this script just execute:
+
+The Patient-Specific script allows for the generation of geometries based on detailed patient-specific data. This script is highly configurable, enabling the use of preloaded datasets or custom data placed in the data directory according to the script settings.
+
+#### Configurable Options
+
+- **Preloaded Data**: You can choose between two preloaded sets of centerlines and corresponding wall and lumen areas. This allows for flexibility in simulating different patient scenarios without needing to source additional data.
+- **Section Placement**: The script supports two modes for placing sections:
+  - **Z-direction**: Sections are placed along the Z-direction, suitable for more straightforward, aligned geometries.
+  - **Tangent to the Centerline**: Sections follow the tangential direction of the centerline, offering a more accurate and patient-specific representation, especially in cases of complex aneurysm paths.
+
+To run the script with these configurations, simply execute the following command:
+
 ```bash
 ./Run_Patient_Specific.sh
 ```
