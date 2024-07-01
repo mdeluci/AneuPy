@@ -14,8 +14,8 @@ export LD_LIBRARY_PATH=$SALOME_ROOT_DIR/BINARIES-CO7/KERNEL/lib:$LD_LIBRARY_PATH
 
 # Define and export directories
 export GEOMETRY_MODULE_DIR="../aneupy-master/aneupy"
-export GEOMETRY_DATA_DIR="/home/miguel/Desktop/aneupy-master/test/data"
-export GEOMETRY_OUTPUT_DIR="/home/miguel/Desktop/aneupy-master/test/Geometry_Output/Idealized_Automatic"
+export GEOMETRY_DATA_DIR="~/Desktop/aneupy-master/test/data"
+export GEOMETRY_OUTPUT_DIR="~/Desktop/aneupy-master/test/Geometry_Output/Idealized_Manual"
 
 # Run idealized automatic script
 $SALOME_ROOT_DIR/salome shell -- python3 /home/miguel/Desktop/aneupy-master/test/Idealized_automatic.py "$@"
