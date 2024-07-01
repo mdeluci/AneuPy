@@ -78,10 +78,7 @@ this script does not require any additional parameters and will execute with pre
 
 You have two options for running the Idealized Automatic script:
 
- - Manually inputting the parameters:
-   ```bash
- ./Run_Idealized_Automatic.sh --length 120 --radius_nondilated 3 --radius_dilated 8 --wall_thickness_intima 0.5 --wall_thickness_media 0.3 --wall_thickness_adventitia 0.7 --wall_thickness_ILT 2 --x_shift 1.5 --y_shift 2.0
-   ```
+ - Manually inputting the parameters: `./Run_Idealized_Automatic.sh --length 120 --radius_nondilated 3 --radius_dilated 8 --wall_thickness_intima 0.5 --wall_thickness_media 0.3 --wall_thickness_adventitia 0.7 --wall_thickness_ILT 2 --x_shift 1.5 --y_shift 2.0`
  - Using a configuration file: `./Run_Idealized_Automatic.sh --config_file ./Params_Idealized_Automatic.json`
 
 ### Running the Patient-Specific Geometry Script
