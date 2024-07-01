@@ -17,6 +17,7 @@ Aneupy not only facilitates the generation of AAA geometries but also ensures th
   - **Intima**: The innermost layer, often affected in vascular diseases.
   - **Media**: The middle layer, crucial for structural integrity and elasticity.
   - **Adventitia**: The outer layer, providing additional support and structure.
+  - **Intraluminal thrombus**: A blood clot attached to an arterial wall, with blood flowing around it at its distal end.
   - These layered models are vital for studies involving detailed mechanical and physiological properties of vascular tissues and are crucial for realistic FEA, CFD, and FSI simulations.
 
 ## Features
