@@ -7,13 +7,22 @@ Aneupy is an open-source software tool designed to generate both idealized and p
 Aneupy offers three main functionalities:
 
 1. **Idealized Manual Geometry Generation (`Idealized_manual.py`)**:
-   - Allows users to manually input the sections (XYZ locations) and radii to generate idealized AAA geometries.
+   - Allows users to manually input the cross sections (XYZ locations) and radii to generate idealized AAA geometries.
 
 2. **Idealized Automatic Geometry Generation (`Idealized_automatic.py`)**:
-   - Automates the generation process using parameters specified in `Params_Idealized_Automatic.json`.
+   - Automates the generation process using parameters specified in `Params_Idealized_Automatic.json`. This script simplifies the creation of idealized geometries by utilizing predefined parameters:
+   - `length`: Total length of the aneurysm
+   - `radius_nondilated`: Non-dilated radius of the aneurysm
+   - `radius_dilated`: Radius of the aneurysm sac
+   - `wall_thickness_intima`: Wall thickness of the intima
+   - `wall_thickness_media`: Wall thickness of the media
+   - `wall_thickness_adventitia`: Wall thickness of the adventitia
+   - `wall_thickness_ILT`: Wall thickness of the intraluminal thrombus (ILT)
+   - `x_shift`: Assymetry of the AAA sac in the X-direction
+   - `y_shift`: Assymetry of the AAA sac in the Y-direction
 
 3. **Patient-Specific Geometry Generation (`Patient_specific.py`)**:
-   - Generates geometries based on patient-specific data, including centerline details of the AAA, wall area, and optionally, the thrombus area.
+   - Generates geometries from patient-specific data derived from centerlines, wall area, and length measurements of the AAA, with the option to include thrombus area if available.
 
 ## Installation
 
