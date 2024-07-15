@@ -32,6 +32,8 @@ These layered models are vital for studies involving detailed mechanical and phy
 
 1. **Idealized Manual Geometry Generation (`Idealized_manual.py`)**:
    - Allows users to manually input the cross sections (XYZ locations) and radii to generate idealized AAA geometries.
+  
+![Parameterization](./Parameterization.png)
 
 2. **Idealized Automatic Geometry Generation (`Idealized_automatic.py`)**:
    - Streamlines the geometry creation process using parameters defined in `Params_Idealized_Automatic.json`, including length, radii, and wall thicknesses. This method is ideal for simulations where standard geometrical parameters are needed. This script simplifies the creation of idealized geometries by utilizing predefined parameters:
