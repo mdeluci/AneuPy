@@ -1,7 +1,7 @@
 # AneuPy
 
 **AneuPy** is an open-source software tool designed to generate both idealized and patient-specific geometries of abdominal aortic aneurysms (AAA). It utilizes the Python interface of the [SALOME platform](https://www.salome-platform.org/) to provide versatile geometry creation options suitable for research, educational purposes, and computational analyses.
-![Example Image](./Examples.png)
+![Logo](./Logo.png)
 
 ### Simulation-Ready Geometries
 
