@@ -115,6 +115,8 @@ You have two options for running the Idealized Automatic script:
 
 The Patient-Specific script allows for the generation of geometries based on detailed patient-specific data. This script is highly configurable, enabling the use of preloaded datasets or custom data placed in the data directory according to the script settings.
 
+![algorithm](./algorithm.png)
+
 #### Configurable Options
 
 - **Preloaded Data**: You can choose between two preloaded sets of centerlines and corresponding wall and lumen areas. This allows for flexibility in simulating different patient scenarios without needing to source additional data.
