@@ -47,6 +47,8 @@ These layered models are vital for studies involving detailed mechanical and phy
       - `x_shift`: Assymetry of the AAA sac in the X-direction
       - `y_shift`: Assymetry of the AAA sac in the Y-direction
     
+The figure below shows different idealized AAA geometries generated with the `Idealized_automatic.py` module:
+    
 ![Idealized](./idealized.png)
 
 4. **Patient-Specific Geometry Generation (`Patient_specific.py`)**:
