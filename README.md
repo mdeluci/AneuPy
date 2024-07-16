@@ -54,7 +54,7 @@ The figure below shows different idealized AAA geometries generated with the `Id
 4. **Patient-Specific Geometry Generation (`Patient_specific.py`)**:
    - Generates geometries from patient-specific data derived from centerlines, wall area, and length measurements of the AAA, with the option to include thrombus area if available. This method allows for high fidelity modeling of individual anatomical features which can be critical in patient-specific simulation studies.
 
-The image below shows two illustrative examples generated with `Patient_specific.py`.
+The image below shows two illustrative examples generated with `Patient_specific.py`:
 
 ![PE](./PE.png)
 
@@ -117,7 +117,7 @@ You have two options for running the Idealized Automatic script:
 
 ### Running the Patient-Specific Geometry Script
 
-The Patient-Specific script allows for the generation of geometries based on detailed patient-specific data. This script is highly configurable, enabling the use of preloaded datasets or custom data placed in the data directory according to the script settings.
+The Patient-Specific script allows for the generation of geometries based on detailed patient-specific data. This script is highly configurable, enabling the use of preloaded datasets or custom data placed in the data directory according to the script settings. Below you can see the workflow followed by the `Patient_specific.py` module to generate AAA geometries from patient-specific data:
 
 ![algorithm](./algorithm.png)
 
