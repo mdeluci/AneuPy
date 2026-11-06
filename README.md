@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-GPLv3%2B-blue.svg" alt="License: GPL v3+"></a>
+  <a href="LICENSE.txt"><img src="https://img.shields.io/badge/license-GPLv3%2B-blue.svg" alt="License: GPL v3+"></a>
   <img src="https://img.shields.io/badge/SALOME-9.11-orange.svg" alt="SALOME 9.11">
   <img src="https://img.shields.io/badge/python-3.6%2B-blue.svg" alt="Python 3.6+">
 </p>
@@ -263,7 +263,7 @@ sweep with a user-defined two-layer wall. See [the API reference](docs/api.md).
 
 ```text
 AneuPy/
-├── aneupy/              Python package (aneupy.geometry needs SALOME; the rest needs only NumPy and SciPy)
+├── src/aneupy/          Python package (aneupy.geometry needs SALOME; the rest needs only NumPy and SciPy)
 ├── docs/api.md          API reference
 ├── examples/
 │   ├── run_in_salome.sh     Runs a script with SALOME's Python
@@ -273,7 +273,7 @@ AneuPy/
 │   └── data/                Sample centerline and area files
 ├── figures/             Figures used in this README
 ├── tools/salome_shim/   OpenCASCADE implementation of GEOM operations, for tests
-└── LICENSE
+└── LICENSE.txt
 ```
 
 ## Tests
@@ -310,4 +310,4 @@ version and, if possible, the input files that reproduce the problem.
 
 ## License
 
-AneuPy is released under the GNU General Public License, version 3 or later. See [LICENSE](LICENSE).
+AneuPy is released under the GNU General Public License, version 3 or later. See [LICENSE.txt](LICENSE.txt).

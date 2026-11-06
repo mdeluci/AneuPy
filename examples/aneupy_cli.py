@@ -5,7 +5,7 @@ Example: ``./run_in_salome.sh aneupy_cli.py idealized --config params_idealized_
 import os
 import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir, "src"))
 
 from aneupy.cli import main  # noqa: E402
 

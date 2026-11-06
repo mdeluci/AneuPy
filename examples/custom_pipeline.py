@@ -6,7 +6,7 @@ blocks in its own way. Run with ``./run_in_salome.sh custom_pipeline.py``.
 import os
 import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir, "src"))
 
 from aneupy import IdealizedParameters, add_layered_solids, export_solids  # noqa: E402
 from aneupy.geometry import Domain  # noqa: E402

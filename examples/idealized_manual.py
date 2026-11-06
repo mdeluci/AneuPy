@@ -5,7 +5,7 @@ Run with ``./run_in_salome.sh idealized_manual.py``.
 import os
 import sys
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir, "src"))
 
 from aneupy.geometry import Domain  # noqa: E402
 from aneupy.pipelines import export_solids  # noqa: E402

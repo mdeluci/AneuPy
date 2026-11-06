@@ -6,7 +6,7 @@ import os
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.join(HERE, os.pardir))
+sys.path.insert(0, os.path.join(HERE, os.pardir, "src"))
 
 from aneupy import IdealizedParameters, build_idealized_model, export_solids  # noqa: E402
 from aneupy.geometry import Domain  # noqa: E402

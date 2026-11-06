@@ -11,7 +11,7 @@ import sys
 import warnings
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path[:0] = [ROOT, os.path.join(ROOT, "tools", "salome_shim")]
+sys.path[:0] = [os.path.join(ROOT, "src"), os.path.join(ROOT, "tools", "salome_shim")]
 
 import matplotlib  # noqa: E402
 
