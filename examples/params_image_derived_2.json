@@ -1,0 +1,6 @@
+{
+    "centerline_file": "data/centerline2.txt",
+    "wall_area_file": "data/Wall_Area2.txt",
+    "lumen_area_file": "data/Lumen_Area2.txt",
+    "flip_profiles": false
+}

@@ -1,0 +1,11 @@
+{
+  "title": "AneuPy: an open-source Python tool for creating simulation-ready geometries of abdominal aortic aneurysms",
+  "upload_type": "software",
+  "license": "GPL-3.0-or-later",
+  "creators": [
+    {"name": "de Lucio, Mario", "affiliation": "Purdue University"},
+    {"name": "Díaz, Jacobo", "affiliation": "Universidade da Coruña"},
+    {"name": "de Castro, Alberto", "affiliation": "Universidade da Coruña"},
+    {"name": "Romera, Luis E.", "affiliation": "Universidade da Coruña"}
+  ]
+}
