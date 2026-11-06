@@ -291,12 +291,14 @@ The shim is a verification instrument. Please confirm final geometries in SALOME
 If you use AneuPy in your research, please cite the accompanying article:
 
 ```bibtex
-@article{aneupy,
-  title   = {TODO: article title},
-  author  = {TODO: authors},
-  journal = {TODO: journal},
-  year    = {TODO},
-  doi     = {TODO}
+@misc{delucio2025aneupyopensourcepython,
+      title={AneuPy: An open source Python tool for creating simulation-ready geometries of abdominal aortic aneurysms}, 
+      author={Mario de Lucio and Jacobo Diaz and Alberto de Castro and Luis E. Romera},
+      year={2025},
+      eprint={2504.15285},
+      archivePrefix={arXiv},
+      primaryClass={physics.med-ph},
+      url={https://arxiv.org/abs/2504.15285}, 
 }
 ```
 
